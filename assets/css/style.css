@@ -1,0 +1,495 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+.container {
+
+    --size: 50vw;
+    --size2: 80vw;
+    --estelaColor: rgba(0, 255, 255, .4);
+    --planetColor: aqua; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 100vw;
+    min-height: 100vh;
+    overflow: hidden;
+    background: url(https://i.ibb.co/Zfhjbqf/1268183.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #000;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    
+}
+
+.allPlanet {
+    position: relative;
+    z-index: 20000;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    
+}
+
+
+.estela {
+    
+    position: relative;
+    width:  var(--size);
+    height: var(--size);
+    border-radius: 50%; 
+    cursor: pointer;
+    animation: estela 4s linear infinite; 
+}
+
+@keyframes estela {
+    
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+
+
+}
+
+.estela::before {
+
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(var(--size) / 2);
+    height: var(--size);
+    background: linear-gradient(to top, transparent, var(--estelaColor) );
+    background-size: calc(var(--size) / 2) calc(var(--size) * .9); 
+    background-repeat: no-repeat;
+    border-top-left-radius: calc(var(--size) / 2);
+    border-bottom-left-radius: calc(var(--size) / 2);
+    
+
+}
+
+
+ .estela::after {
+
+    content: '';
+    z-index: 100;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    background-color: var(--planetColor);
+    height: calc(var(--size) / 40);
+    width: calc(var(--size) / 40);
+    border-radius: 50%;
+    animation: star 4s ease-in-out;
+    box-shadow: 0 0 10px var(--planetColor),
+                0 0 30px var(--planetColor),
+                0 0 40px var(--planetColor),
+                0 0 50px var(--planetColor),
+                0 0 60px var(--planetColor),
+                0 0 70px var(--planetColor),
+                0 0 80px var(--planetColor),
+                0 0 20px var(--planetColor),
+                0 0 90px var(--planetColor),
+                0 0 100px var(--planetColor);
+
+} 
+
+.brillo {
+    position: absolute;
+    display: block;
+    top: calc(var(--size) / 40);
+    left: calc(var(--size) / 40);
+    right: calc(var(--size) / 40);
+     bottom: calc(var(--size) / 40);
+    background:  #000;
+    border-radius: 50%;    
+}
+
+.tierra {
+    
+    position: absolute;
+    background: url(https://i.ibb.co/YDtMVKn/earth.jpg);
+    background-position: center;
+    height: calc(var(--size) * .8);
+    width: calc(var(--size) * .8);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--planetColor) inset,
+                0 0 20px var(--planetColor);
+    animation: moving 15s linear infinite;
+    cursor: pointer;
+    transition: .7s;
+    overflow: hidden;
+}
+
+@keyframes moving {
+    to {
+        background-position-x: 0;
+    }
+    from {
+        background-position-x: 850px;
+    }
+}
+
+.marteEstela::before {
+
+    --estelaColor: rgba(255, 87, 54, .4)
+}
+
+.marteEstela::after {
+
+    --planetColor: #ff5722;
+}
+
+.marte {
+    overflow: hidden;
+    background-image: url(https://i.ibb.co/6w58gfX/mars.jpg);
+    --planetColor: #ff5722;
+    animation: movingMarte 7s linear infinite;
+}
+
+@keyframes movingMarte {
+    
+    to {
+        background-position-x: 0px;
+    }
+    from {
+        background-position-x: 340px;
+    }
+}
+
+
+@media (max-width:750px){
+
+    .container {
+        --size: 80vw;
+        
+    }
+}
+
+@media (orientation:landscape){
+
+    .container {
+        --size: 30vw;
+    }
+}
+
+/*Final csss Primer desafio*/
+
+
+.picsContainer {
+    height: calc(var(--size2) * .5);
+    width: var(--size2);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: .5s;
+}
+
+.picsContainer span {
+    display: block;
+    border-bottom: calc(var(--size2) * .01) solid #FFF;
+    height: calc(var(--size2) * .11) ;
+    width: calc(var(--size2) * .11);
+    cursor: pointer;
+    transition: .5s;
+}
+
+
+.picsContainer span:hover {
+
+    filter: drop-shadow(0 0 10px #FFF)
+    drop-shadow(0 0 20px #FFF)
+    drop-shadow(0 0 30px #FFF);
+ 
+}
+
+.picsContainer .previous {
+
+    border-left: calc(var(--size2) * .01) solid #FFF;
+    transform: rotate(45deg);
+    display: none;
+}
+
+.picsContainer .next {
+    
+    border-right: calc(var(--size2) * .01) solid #FFF;
+    transform: rotate(-45deg);
+    display: none;
+}
+
+.pics {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: calc(var(--size2) * .7);
+    height: calc(var(--size2) * .4);
+
+}
+
+.current {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    width: calc(var(--size2) * .3);
+    height: calc(var(--size2) * .4);
+    position: relative;
+    transition: .5s;
+    border: 2px solid #FFF;
+    border-radius: 20px;
+    box-shadow: 0 0 5px #FFF inset, 0 0 25px #FFF inset, 0 0 50px #FFF inset, 0 0 200px #FFF;
+  
+}
+
+@keyframes startAnimation {
+    
+    0% {
+        transform: translateZ(-2000px) rotateX(0);
+        opacity: 0;
+    } 
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateZ(0) rotateX(-3600deg);
+    }
+}
+
+@keyframes endAnimation {
+    
+    0% {
+        transform: translateZ(0) rotateX(0deg);
+    }
+
+    50% {
+      width: 300px;
+    }
+
+    100% {
+        transform: translateZ(300px) rotateX(90deg);
+        width: 0;
+    }
+ }
+
+
+
+.pics .current .img {
+
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 20px;
+    opacity: .7;  
+    cursor: pointer;
+    transition: .5s;
+    z-index: 10;
+}
+
+
+
+
+
+.boxMartian, .boxInter, .boxGrav {
+    
+    position: absolute;
+    width: calc(var(--size2) * .3);
+    height: calc(var(--size2) * .4);
+    background-color: rgba(0, 0, 0, .85);
+    border-radius: 10px;
+    opacity: 0;
+    z-index: 0;
+    border-radius: 20px;
+    box-shadow: 2px 2px  5px #FFF,
+                2px 2px 30px #FFF inset,
+                8px 8px 20px rgb(253, 245, 245);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transition: .5s;
+    gap: 4%;
+    
+    
+
+}
+
+.p {
+    text-align: center;
+    font-size: calc(var(--size2) * .015);
+    letter-spacing: 3px;
+    color: #FFF;
+    text-shadow: 2px 2px  5px #ccc, 1px 1px 4px #000;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.theMartian, .Inter, .Grav {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6%;
+    width: calc(var(--size2) * .2);
+    height: calc(var(--size2) * .05);
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+.theMartian button, .Inter button, .Grav button {
+
+    display: block;
+    position: relative;
+    background: #FFF;
+    height: calc(var(--size2) * .005);
+    width: calc(var(--size2) * .02);
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+}
+
+
+.moreM::before, .moreI::before, .moreG::before {
+    
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: calc(var(--size2) * .005);
+    width: calc(var(--size2) * .02);
+    background: #FFF;
+    transform: rotate(90deg);
+    
+    
+}
+
+.theMartian button:hover, .Inter button:hover, .Grav button:hover {
+
+    box-shadow: 0 0 5px #FFF,
+                0 0 25px #FFF,
+                0 0 50px #FFF,
+                0 0 100px #FFF,
+                0 0 200px #FFF;
+}
+
+.theMartian button:hover::before, .Inter button:hover::before, .Grav button:hover::before {
+
+    box-shadow: 0 0 5px #FFF,
+                0 0 25px #FFF,
+                0 0 50px #FFF,
+                0 0 100px #FFF,
+                0 0 200px #FFF;
+}
+
+
+
+input[type="number"] {
+    background: white;
+    width: calc(var(--size2) * .1);
+    height: calc(var(--size2) * .04);
+    cursor: text;
+    border: none;
+    border-radius: 25px;
+    outline: none;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: calc(var(--size2) * .015);
+    text-align: center;
+    padding-left: 5%;
+}
+
+.alertaM, .alertaI, .alertaG {
+    
+    position: absolute;
+    top: 70%;
+    text-align: center;
+    font-size: calc(var(--size2) * .015);
+    letter-spacing: 3px;
+    color: #FFF;
+    text-shadow: 2px 2px  5px #ccc, 1px 1px 4px #000;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+
+
+@media (max-width:800px) {
+
+   .current, .boxMartian, .boxInter, .boxGrav {
+    width: calc(var(--size2) * .7);
+    height: calc(var(--size2) );
+   }
+
+   .p, .alertaM, .alertaI, .alertaG {
+    font-size: 3vw;
+}   
+    .theMartian, .Inter, .Grav {
+        width: calc(var(--size2) * .9);
+        height: calc(var(--size2) * .1);
+    }
+
+    input[type="number"] {
+        width: calc(var(--size2) * .15);
+        height: calc(var(--size2) * .06);
+        font-size: 4vw;
+    }
+
+    .theMartian button, .Inter button, .Grav button, .moreM::before, .moreI::before, .moreG::before {
+
+        height: calc(var(--size2) * .009);
+        width: calc(var(--size2) * .04);
+    }
+
+    
+}
+
+@media (orientation:landscape) and (max-width: 800px) {
+    .current, .boxMartian, .boxInter, .boxGrav {
+    width: calc(var(--size2) * .3);
+    height: calc(var(--size2) * .4);
+    
+   }
+
+   input[type = 'number'] {
+    width: 60px;
+    height: 20px;
+    font-size: .7em ;
+   }
+
+  .inter button, .grav button, .theMartian button {
+    width: 15px;
+    
+   }
+
+   .inter button::before, .grav button::before, .theMartian button::before {
+    width: 15px;
+
+   }
+    
+
+   .alertaG, .alertaI, .alertaM, .p {
+    font-size: .6em;
+   }
+
+
+}
