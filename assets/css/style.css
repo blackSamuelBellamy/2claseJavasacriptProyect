@@ -601,7 +601,7 @@ input[type="number"] {
 }
 
 
-input {
+#inputPass1, #inputPass2, #inputPass3 {
     position: relative;
     text-align: center;
     width: calc(var(--size3) / 2);
@@ -847,17 +847,12 @@ input::placeholder {
         height: calc(var(--size3));
     }
 
-    input::placeholder {
+    #inputPass1, #inputPass2, #inputPass3 {
    
-        font-size: .75em;
+            font-size: .75em;
         
         }
 
-    input {
-
-            font-size: .8em;
-         }
-    
     .verificar {
         margin-top: 30%;
     }
@@ -907,7 +902,6 @@ input::placeholder {
    
     .container {
         --size3: 35vw;
-        align-items: flex-start !important;
     }
 
     .container .fingerPrint {
