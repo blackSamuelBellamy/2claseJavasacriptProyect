@@ -349,6 +349,23 @@ entendido.addEventListener('click', ()=> {
     error.style.top = '-100%';
 })
 
+
+const lengthValue = input =>{
+
+    input.addEventListener('change', ()=>{
+        if(input.value.length > 1) {
+            input.value = 0;
+        }
+    })
+
+}
+
+lengthValue(inputPass1);
+lengthValue(inputPass2);
+lengthValue(inputPass3);
+
+
+
 verificar.addEventListener('click', ()=>{
     sumatoria= inputPass1.value + inputPass2.value + inputPass3.value;
 
