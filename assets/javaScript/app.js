@@ -11,7 +11,7 @@ allPlanet.addEventListener('click', () => {
     planetCounter ++;
 
 
-    if(planetCounter == 2) {
+    if(planetCounter == 3) {
         allPlanet.style.transition = '4s';
         allPlanet.style.opacity = '0';
         setTimeout(()=>{
